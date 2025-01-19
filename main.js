@@ -19,12 +19,12 @@ document.body.appendChild(renderer.domElement);
 const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 1, 1000);
 camera.position.set(10, 5, 10);
 
-// Настройка управления камерой
+// Изменение максимального расстояния камеры для увеличения области видимости
 const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enablePan = false;
-controls.minDistance = 5;
-controls.maxDistance = 20;
+controls.minDistance = 5; // Минимальное расстояние
+controls.maxDistance = 50; // Увеличили максимальное расстояние
 controls.minPolarAngle = 0.5;
 controls.maxPolarAngle = 1.5;
 controls.autoRotate = false;
@@ -68,7 +68,10 @@ loader.load('giger_walk.glb', (gltf) => {
   });
 
   model.position.set(0, 0, 0);
-  model.scale.set(1, 1, 1);
+
+  // Уменьшаем модель
+  model.scale.set(0.5, 0.5, 0.5); // Снижаем размер модели (50% от оригинала)
+
   scene.add(model);
 });
 
